@@ -74,7 +74,7 @@ function App() {
       <section id="sobre" className="max-w-4xl mx-auto py-20 px-6">
         <div className="bg-[#0a0a0a] border border-white/5 p-10 rounded-3xl relative">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-purple-500"></span> Bio-Transmissão
+            <span className="w-8 h-[1px] bg-purple-500"></span> Bio.
           </h2>
           <p className="text-lg leading-relaxed text-slate-400">
             Desenvolvedora Back-End recém-formada em Análise e Desenvolvimento de Sistemas, com foco na construção de APIs robustas e escaláveis. A curiosidade é o que me move: sou fascinada por entender como as coisas funcionam para, então, descobrir como podemos fazê-las funcionar melhor.
@@ -218,16 +218,20 @@ function App() {
             {[
               { name: 'Node.js', icon: '⚡' },
               { name: 'JavaScript', icon: 'JS' },
-              { name: 'SQL', icon: 'DB' },
-              { name: 'MongoDB', icon: '🍃' },
+              { name: 'Express.js', icon: '🚂' }, 
               { name: 'API RESTful', icon: '☁️' },
-              { name: 'Git/GitHub', icon: 'GIT' },
-              { name: 'Kotlin', icon: 'K' },
-              { name: 'Python', icon: 'PY' }
+              { name: 'PostgreSQL', icon: '🐘' },   
+              { name: 'Render / Deploy', icon: '🚀' },
+              { name: 'Git/GitHub', icon: '📦' },
+              { name: 'Scrum / Agile', icon: '🔄' }  
             ].map(skill => (
-              <div key={skill.name} className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition">
-                <span className="text-xs font-mono text-purple-500">{skill.icon}</span>
-                <span className="text-sm font-bold text-slate-300">{skill.name}</span>
+              <div key={skill.name} className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition shadow-sm hover:shadow-purple-500/10 group-hover:bg-white/10">
+                <span className="text-xl font-mono text-purple-500 filter drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
+                  {skill.icon}
+                </span>
+                <span className="text-sm font-bold text-slate-300 group-hover:text-white transition">
+                  {skill.name}
+                </span>
               </div>
             ))}
           </div>
