@@ -17,8 +17,21 @@ function App() {
       hospedagem: "Render",
       status: "Em Operação / Produção",
       criadoEm: "2024",
-      github: "https://github.com/thamilescarvalho/gestao-financeira", // Substitua pelo seu link
+      github: "https://github.com/thamilescarvalho/gestao-financeira", 
       detalhesTecnicos: "Uso de arquitetura MVP para separação de responsabilidades, garantindo facilidade em testes unitários e manutenção."
+    },
+    {
+      id: 2,
+      titulo: "Projeto Final {Reprograma}",
+      resumo: "Aqui é o inicio de tudo! A primeira API que construi do zero, desenvolvida como Projeto Final do Bootcamp 'Todas em Tech' da {Reprograma}.",
+      descricao: "API focada em criar uma rede de apoio e gerenciamento de recursos para mulheres. O sistema utiliza a flexibilidade do MongoDB para lidar com dados complexos e variados de forma performática.",
+      stack: ["Node.js", "Express", "MongoDB", "Mongoose"], 
+      banco: "MongoDB Atlas",
+      hospedagem: "Render", // Assumindo Render (padrão do mercado free tier)
+      status: "Concluído / MVP",
+      criadoEm: "2022",
+      github: "https://github.com/thamilescarvalho/projeto-final-thamiles-cuidando-delas",
+      detalhesTecnicos: "Modelagem de dados com Mongoose (Schemas), configuração de CORS para integração com Front-end e gerenciamento seguro de variáveis de ambiente (dotenv)."
     }
   ];
 
@@ -31,7 +44,7 @@ function App() {
           <span className="text-purple-500 font-mono font-bold tracking-tighter text-xl">{'<THAMILES />'}</span>
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
             <a href="#sobre" className="hover:text-purple-400 transition">Sobre</a>
-            <a href="#sistemas" className="hover:text-purple-400 transition">Sistemas</a>
+            <a href="#sistemas" className="hover:text-purple-400 transition">Projetos</a>
             <a href="#habilidades" className="hover:text-purple-400 transition">Habilidades</a>
           </div>
         </div>
@@ -58,13 +71,13 @@ function App() {
           </div>
 
           <div className="text-center md:text-left">
-            <span className="text-purple-500 font-mono text-sm tracking-[0.5em] uppercase mb-4 block">Status: Disponível para Missões</span>
+            <span className="text-purple-500 font-mono text-sm tracking-[0.5em] uppercase mb-4 block">Status: Available for Missions</span>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none">
               THAMILES <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">CARVALHO</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-slate-400 font-light max-w-xl">
-              Developing full-stack web apps to turn complex ideas into reality.
+            <p className="mt-6 text-lg md:text-xl text-slate-400 font-light max-w-xl ">
+              Desenvolvimento Full-Stack estratégico: converto requisitos complexos em soluções digitais escaláveis e de alto desempenho.
             </p>
           </div>
         </div>
@@ -76,14 +89,44 @@ function App() {
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-purple-500"></span> Bio.
           </h2>
-          <p className="text-lg leading-relaxed text-slate-400">
-            Desenvolvedora Back-End recém-formada em Análise e Desenvolvimento de Sistemas, com foco na construção de APIs robustas e escaláveis. A curiosidade é o que me move: sou fascinada por entender como as coisas funcionam para, então, descobrir como podemos fazê-las funcionar melhor.
-            Minha trajetória em Suporte e Operações me proporcionou uma visão prática sobre o impacto da tecnologia, desenvolvendo minha capacidade de análise e resolução de problemas que hoje aplico diretamente no desenvolvimento.
+          <p className="text-lg leading-relaxed text-slate-400 text-justify">
+            Focada na engenharia de APIs robustas e de alta performance. Com formação em Análise e Desenvolvimento de Sistemas, combino conhecimento técnico atualizado com um background sólido em Suporte e Operações. Essa vivência prática me deu uma visão privilegiada sobre troubleshooting e impacto no usuário final, moldando minha abordagem para criar códigos não apenas funcionais, mas estáveis, escaláveis e fáceis de manter.
           </p>
         </div>
       </section>
 
-      {/* 4. SISTEMAS ATIVOS (COM MODAL) */}
+      {/* 4. HABILIDADES */}
+      <section id="habilidades" className="max-w-6xl mx-auto py-20 px-6">
+        <div className="bg-[#0a0a0a] border border-white/5 p-10 rounded-3xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-[100px]"></div>
+          <h2 className="text-2xl font-bold text-white mb-10 flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-purple-500"></span> Core Engine Skills
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: 'Node.js', icon: '⚡' },
+              { name: 'JavaScript', icon: 'JS' },
+              { name: 'Express.js', icon: '🚂' }, 
+              { name: 'API RESTful', icon: '☁️' },
+              { name: 'PostgreSQL', icon: '🐘' },   
+              { name: 'Render / Deploy', icon: '🚀' },
+              { name: 'Git/GitHub', icon: '📦' },
+              { name: 'Scrum / Agile', icon: '🔄' }  
+            ].map(skill => (
+              <div key={skill.name} className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition shadow-sm hover:shadow-purple-500/10 group-hover:bg-white/10">
+                <span className="text-xl font-mono text-purple-500 filter drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
+                  {skill.icon}
+                </span>
+                <span className="text-sm font-bold text-slate-300 group-hover:text-white transition">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. SISTEMAS ATIVOS (COM MODAL) */}
       <section id="sistemas" className="max-w-6xl mx-auto py-20 px-6">
         <h2 className="text-xs font-bold text-purple-500 mb-12 tracking-[0.4em] uppercase text-center">Protocolos & Projetos</h2>
         
@@ -116,7 +159,7 @@ function App() {
         </div>
       </section>
 
-      {/* 5. MODAL DETALHADO (VERSÃO AJUSTADA) */}
+      {/* 6. MODAL DETALHADO */}
       {projetoSelecionado && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
           {/* Container Principal do Modal */}
@@ -207,36 +250,7 @@ function App() {
         </div>
       )}
 
-      {/* 6. HABILIDADES */}
-      <section id="habilidades" className="max-w-6xl mx-auto py-20 px-6">
-        <div className="bg-[#0a0a0a] border border-white/5 p-10 rounded-3xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-[100px]"></div>
-          <h2 className="text-2xl font-bold text-white mb-10 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-purple-500"></span> Core Engine Skills
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: 'Node.js', icon: '⚡' },
-              { name: 'JavaScript', icon: 'JS' },
-              { name: 'Express.js', icon: '🚂' }, 
-              { name: 'API RESTful', icon: '☁️' },
-              { name: 'PostgreSQL', icon: '🐘' },   
-              { name: 'Render / Deploy', icon: '🚀' },
-              { name: 'Git/GitHub', icon: '📦' },
-              { name: 'Scrum / Agile', icon: '🔄' }  
-            ].map(skill => (
-              <div key={skill.name} className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition shadow-sm hover:shadow-purple-500/10 group-hover:bg-white/10">
-                <span className="text-xl font-mono text-purple-500 filter drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
-                  {skill.icon}
-                </span>
-                <span className="text-sm font-bold text-slate-300 group-hover:text-white transition">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* WHATSAPP FLUTUANTE */}
       <a href="https://wa.me/5585981852263" target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-50 group">
@@ -249,8 +263,8 @@ function App() {
       {/* FOOTER */}
       <footer className="py-20 text-center border-t border-white/5">
         <div className="max-w-6xl mx-auto px-6">
-           <p className="text-purple-300 font-bold tracking-widest uppercase text-sm">Thamiles Carvalho // 2026</p>
-           <p className="mt-2 text-slate-600 text-[10px] uppercase">Fortaleza, CE // UNIFOR // ADS [cite: 86, 96, 97]</p>
+           <p className="text-purple-300 font-bold tracking-widest uppercase text-sm">Fortaleza, CE // UNIFOR // ADS 2025.1 </p>
+           
         </div>
       </footer>
     </div>
