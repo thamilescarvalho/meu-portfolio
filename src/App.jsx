@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import minhaFoto from './assets/perfil.png'; 
+import minhaFoto from './assets/perfil.PNG'; 
 
 function App() {
   // Estado para controlar qual projeto está aberto no modal
