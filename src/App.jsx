@@ -5,7 +5,7 @@ function App() {
   // Estado para controlar qual projeto está aberto no modal
   const [projetoSelecionado, setProjetoSelecionado] = useState(null);
   
-  // NOVO: Estado para controlar o zoom da foto
+  // Estado para controlar o zoom da foto
   const [fotoExpandida, setFotoExpandida] = useState(false);
 
   // Lista de projetos detalhada para o Modal
@@ -20,6 +20,8 @@ function App() {
       hospedagem: "Render",
       status: "Em Operação / Produção",
       criadoEm: "2024",
+      // Link do Render
+      link: "https://gestao-financeira-1m7v.onrender.com/",
       github: "https://github.com/thamilescarvalho/gestao-financeira", 
       detalhesTecnicos: "Uso de arquitetura MVP para separação de responsabilidades, garantindo facilidade em testes unitários e manutenção."
     },
@@ -30,7 +32,7 @@ function App() {
       descricao: "API focada em criar uma rede de apoio e gerenciamento de recursos para mulheres. O sistema utiliza a flexibilidade do MongoDB para lidar com dados complexos e variados de forma performática.",
       stack: ["Node.js", "Express", "MongoDB", "Mongoose"], 
       banco: "MongoDB Atlas",
-      hospedagem: "Render", // Assumindo Render (padrão do mercado free tier)
+      hospedagem: "Render", 
       status: "Concluído / MVP",
       criadoEm: "2022",
       github: "https://github.com/thamilescarvalho/projeto-final-thamiles-cuidando-delas",
@@ -53,7 +55,7 @@ function App() {
         </div>
       </nav>
 
-      {/* FUNDO ESPACIAL COM OVERLAY ROXO */}
+      {/* FUNDO ESPACIAL */}
       <div className="fixed inset-0 pointer-events-none">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
@@ -74,10 +76,9 @@ function App() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
           <div className="relative group">
             <div className="absolute inset-0 bg-purple-500 rounded-full blur-3xl opacity-20 group-hover:opacity-50 transition duration-700"></div>
-            
             {/* FOTO CLICÁVEL */}
             <div 
-              onClick={() => setFotoExpandida(true)} // Ao clicar, abre o modal
+              onClick={() => setFotoExpandida(true)}
               className="relative p-1 bg-gradient-to-tr from-purple-400 via-fuchsia-500 to-transparent rounded-full cursor-pointer hover:scale-105 transition-transform duration-300"
               title="Clique para ampliar"
             >
@@ -86,7 +87,6 @@ function App() {
                 alt="Thamiles Carvalho" 
                 className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-[#050505]"
               />
-              {/* Ícone de zoom pequeno para indicar clique */}
               <div className="absolute bottom-2 right-2 bg-purple-600 rounded-full p-2 border-2 border-[#050505] opacity-0 group-hover:opacity-100 transition-opacity">
                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -94,9 +94,7 @@ function App() {
               </div>
             </div>
           </div>
-
           <div className="text-center md:text-left">
-            <span className="text-purple-500 font-mono text-sm tracking-[0.5em] uppercase mb-4 block">Status: Available for Missions</span>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none">
               THAMILES <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">CARVALHO</span>
@@ -208,7 +206,6 @@ function App() {
               </button>
             </div>
             <div className="p-6 md:p-8 space-y-8 overflow-y-auto custom-scrollbar flex-1">
-              {/* Conteúdo do modal de projetos... */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-5 bg-white/5 rounded-2xl border border-white/5 flex flex-col justify-center">
                     <h5 className="text-xs text-purple-400 font-bold uppercase mb-2 tracking-wider flex items-center gap-2">Hospedagem</h5>
@@ -238,37 +235,55 @@ function App() {
                   </div>
               </div>
             </div>
-            <div className="p-6 md:p-8 bg-white/5 border-t border-white/5 mt-auto">
-              <a href={projetoSelecionado.github} target="_blank" rel="noreferrer" className="block w-full bg-purple-600 hover:bg-purple-500 text-white text-center py-4 rounded-xl font-bold text-lg transition shadow-[0_0_25px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] transform hover:-translate-y-1">
-                Explorar Código no GitHub 🚀
+            
+            {/* RODAPÉ DO MODAL */}
+            <div className="p-6 md:p-8 bg-white/5 border-t border-white/5 mt-auto flex flex-col md:flex-row gap-4">
+              {projetoSelecionado.link && (
+                <a 
+                  href={projetoSelecionado.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-4 rounded-xl font-bold text-lg transition shadow-[0_0_25px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                >
+                  <span>Acessar Sistema</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 00-2 2h10a2 2 0 00-2-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+              <a 
+                href={projetoSelecionado.github} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex-1 border border-white/10 hover:bg-white/5 text-slate-300 hover:text-white text-center py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2"
+              >
+                <span>Ver Código</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* 7. NOVO: MODAL DE ZOOM DA FOTO */}
+      {/* 7. MODAL DE ZOOM DA FOTO */}
       {fotoExpandida && (
         <div 
           className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
-          onClick={() => setFotoExpandida(false)} // Fecha ao clicar fora
+          onClick={() => setFotoExpandida(false)} 
         >
           <div className="relative group">
-            {/* Efeito de brilho neon atrás da foto grande */}
             <div className="absolute inset-0 bg-purple-600 rounded-full blur-[100px] opacity-50"></div>
-            
             <img 
               src={minhaFoto} 
               alt="Thamiles Carvalho - Zoom" 
               className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full object-cover border-4 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.6)] z-10 scale-100 animate-in zoom-in-50 duration-300"
             />
-            
             <p className="text-center text-slate-400 mt-8 font-mono text-sm tracking-widest uppercase animate-pulse">
               Clique em qualquer lugar para fechar
             </p>
           </div>
-          
-          {/* Botão de Fechar Explicito (X) */}
           <button 
             className="absolute top-8 right-8 text-white/50 hover:text-white transition"
             onClick={() => setFotoExpandida(false)}
@@ -298,7 +313,17 @@ function App() {
       {/* FOOTER */}
       <footer className="py-20 text-center border-t border-white/5">
         <div className="max-w-6xl mx-auto px-6">
-           <p className="text-slate-200 font-bold tracking-widest uppercase text-sm drop-shadow-md">Fortaleza, CE // UNIFOR // ADS 2025.1 </p>
+           {/* AUMENTADA VISIBILIDADE: text-white e drop-shadow-lg */}
+           <p className="text-white font-bold tracking-widest uppercase text-sm drop-shadow-lg">Fortaleza, CE // UNIFOR // ADS 2025.1 </p>
+           
+           {/* SELO DE SEGURANÇA COM MAIOR VISIBILIDADE */}
+           <div className="mt-12 flex flex-col items-center justify-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-500 cursor-help" title="Conexão Segura">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              {/* Texto do selo mais claro */}
+              <span className="text-[10px] uppercase tracking-[0.3em] text-purple-300 font-mono">SSL Secure // Verified System</span>
+           </div>
         </div>
       </footer>
     </div>
