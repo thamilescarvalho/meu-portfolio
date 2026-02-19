@@ -28,17 +28,16 @@ function App() {
     {
       id: 2,
       titulo: "Projeto Final {Reprograma}",
-      resumo: "Aqui é o inicio de tudo! A primeira API que construi do zero, desenvolvida como Projeto Final do Bootcamp 'Todas em Tech' da {Reprograma}.",
-      descricao: "API focada em criar uma rede de apoio e gerenciamento de recursos para mulheres. O sistema utiliza a flexibilidade do MongoDB para lidar com dados complexos e variados de forma performática.",
-      stack: ["Node.js", "Express", "MongoDB", "Mongoose"], 
+      resumo: "API de impacto social desenvolvida no bootcamp da {Reprograma} para gestão de atividades de saúde feminina em Fortaleza/CE.",
+      descricao: "Desenvolvida como Projeto Final do bootcamp 'Todas em Tech' da {Reprograma}, esta API une código e propósito. O sistema foi projetado para promover as ações do projeto social 'CUIDANDO DELAS', voltado para mulheres em situações de vulnerabilidade social na região de Fortaleza/CE. A aplicação realiza o controle eficiente e seguro de cadastros, gestão de atividades e acompanhamento de participantes, viabilizando a promoção de serviços essenciais de saúde física e mental para mulheres.",
+      stack: ["Node.js", "Express", "MongoDB", "JWT", "Bcrypt", "Supertest"], 
       banco: "MongoDB Atlas",
-      hospedagem: "Render", 
-      status: "Concluído / MVP",
+      hospedagem: "Local / Desenvolvimento", 
+      status: "Concluído / Refatorado",
       criadoEm: "2022",
       github: "https://github.com/thamilescarvalho/projeto-final-thamiles-cuidando-delas",
-      detalhesTecnicos: "Modelagem de dados com Mongoose (Schemas), configuração de CORS para integração com Front-end e gerenciamento seguro de variáveis de ambiente (dotenv)."
-    }
-  ];
+      detalhesTecnicos: "Implementação de Hashes de senha com Bcrypt, geração e validação de Tokens JWT para controle de sessão e infraestrutura preparada para testes de integração com Supertest."
+    }  ];
 
   return (
     <div className="min-h-screen selection:bg-purple-500 selection:text-white bg-[#050505] text-slate-300">
