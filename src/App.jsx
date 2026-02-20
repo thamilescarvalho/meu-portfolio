@@ -40,10 +40,10 @@ function App() {
     }  ];
 
   return (
-    <div className="min-h-screen selection:bg-purple-500 selection:text-white bg-[#050505] text-slate-300">
+    <div className="min-h-screen selection:bg-purple-500 selection:text-white bg-space-black text-slate-300">
       
       {/* 1. NAVBAR FIXA */}
-      <nav className="fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 w-full z-50 bg-space-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <span className="text-purple-500 font-mono font-bold tracking-tighter text-xl">{'<THAMILES />'}</span>
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
@@ -63,7 +63,7 @@ function App() {
             filter: 'hue-rotate(20deg) contrast(1.1)' 
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-purple-900/20 to-[#050505] opacity-90"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-space-black via-purple-900/20 to-space-black opacity-90"></div>
         <div className="absolute inset-0 opacity-20" 
              style={{ backgroundImage: 'radial-gradient(white 1px, transparent 0)', backgroundSize: '60px 60px' }}></div>
       </div>
@@ -78,15 +78,15 @@ function App() {
             {/* FOTO CLICÁVEL */}
             <div 
               onClick={() => setFotoExpandida(true)}
-              className="relative p-1 bg-gradient-to-tr from-purple-400 via-fuchsia-500 to-transparent rounded-full cursor-pointer hover:scale-105 transition-transform duration-300"
+              className="relative p-1 bg-linear-to-tr from-purple-400 via-fuchsia-500 to-transparent rounded-full cursor-pointer hover:scale-105 transition-transform duration-300"
               title="Clique para ampliar"
             >
               <img 
                 src={minhaFoto} 
                 alt="Thamiles Carvalho" 
-                className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-[#050505]"
+                className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 to-space-black"
               />
-              <div className="absolute bottom-2 right-2 bg-purple-600 rounded-full p-2 border-2 border-[#050505] opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-2 right-2 bg-purple-600 rounded-full p-2 border-2 border-space-black opacity-0 group-hover:opacity-100 transition-opacity">
                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                   </svg>
@@ -96,7 +96,7 @@ function App() {
           <div className="text-center md:text-left">
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none">
               THAMILES <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">CARVALHO</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-fuchsia-500">CARVALHO</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-slate-400 font-light max-w-xl ">
               Desenvolvimento Full-Stack estratégico: converto requisitos complexos em soluções digitais escaláveis e de alto desempenho.
@@ -109,7 +109,7 @@ function App() {
       <section id="sobre" className="max-w-4xl mx-auto py-20 px-6">
         <div className="bg-[#0a0a0a] border border-purple-500/20 p-10 rounded-3xl relative shadow-[0_0_15px_rgba(168,85,247,0.1)]">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-purple-500"></span> Bio.
+            <span className="w-8 h-px bg-purple-500"></span> Bio.
           </h2>
           <p className="text-lg leading-relaxed text-slate-400 text-justify">
             Focada na engenharia de APIs robustas e de alta performance. Com formação em Análise e Desenvolvimento de Sistemas, combino conhecimento técnico atualizado com um background sólido em Suporte e Operações. Essa vivência prática me deu uma visão privilegiada sobre troubleshooting e impacto no usuário final, moldando minha abordagem para criar códigos não apenas funcionais, mas estáveis, escaláveis e fáceis de manter.
@@ -122,7 +122,7 @@ function App() {
         <div className="bg-[#0a0a0a] border border-purple-500/20 p-10 rounded-3xl relative overflow-hidden group shadow-[0_0_15px_rgba(168,85,247,0.1)]">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-[100px]"></div>
           <h2 className="text-2xl font-bold text-white mb-10 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-purple-500"></span> Core Engine Skills
+            <span className="w-8 h-px bg-purple-500"></span> Core Engine Skills
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -185,7 +185,7 @@ function App() {
 
       {/* 6. MODAL DE PROJETOS */}
       {projetoSelecionado && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
           <div className="bg-[#0f0f0f] border border-white/10 w-full md:max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-300 flex flex-col">
             <div className="p-6 md:p-8 border-b border-white/5 flex justify-between items-start bg-[#0f0f0f] z-10">
               <div>
@@ -217,13 +217,15 @@ function App() {
               </div>
               <div className="space-y-6">
                   <div>
-                    <h4 className="text-white font-bold mb-3 uppercase text-sm tracking-widest text-purple-500 border-l-4 border-purple-500 pl-3">Missão do Projeto</h4>
-                    <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.descricao}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold mb-3 uppercase text-sm tracking-widest text-purple-500 border-l-4 border-purple-500 pl-3">Especificações Técnicas</h4>
-                    <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.detalhesTecnicos}</p>
-                  </div>
+                    <h4 className="text-white font-bold mb-3 uppercase text-sm tracking-widest border-l-4 border-purple-500 pl-3">
+                      Missão do Projeto</h4>
+                      <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.descricao}</p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-3 uppercase text-sm tracking-widest border-l-4 border-purple-500 pl-3">
+                        Especificações Técnicas</h4>
+                        <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.detalhesTecnicos}</p>
+                        </div>
               </div>
               <div>
                   <h4 className="text-slate-500 font-bold mb-4 uppercase text-xs tracking-widest">Tecnologias Envolvidas</h4>
@@ -269,7 +271,7 @@ function App() {
       {/* 7. MODAL DE ZOOM DA FOTO */}
       {fotoExpandida && (
         <div 
-          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
           onClick={() => setFotoExpandida(false)} 
         >
           <div className="relative group">
@@ -277,7 +279,7 @@ function App() {
             <img 
               src={minhaFoto} 
               alt="Thamiles Carvalho - Zoom" 
-              className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full object-cover border-4 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.6)] z-10 scale-100 animate-in zoom-in-50 duration-300"
+              className="relative w-80 h-75 md:w-lg md:h-125 rounded-full object-cover border-4 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.6)] z-10 scale-100 animate-in zoom-in-50 duration-300"
             />
             <p className="text-center text-slate-400 mt-8 font-mono text-sm tracking-widest uppercase animate-pulse">
               Clique em qualquer lugar para fechar
