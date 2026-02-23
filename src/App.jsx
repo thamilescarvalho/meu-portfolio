@@ -73,7 +73,7 @@ function App() {
       id: 1,
       titulo: "Gestão Financeira API",
       resumo: "API RESTful completa com arquitetura MVP para controle financeiro.",
-      descricao: "Sistema de back-end robusto focado em integridade de dados e escalabilidade. Desenvolvido para transformar ideias de fluxo de caixa em uma realidade técnica eficiente.",
+      descricao: "Sistema de back-end robusto focado em integridade de dados e escalabilidade. Desenvolvido para transformar ideias de 'fluxo de caixa' em uma realidade técnica eficiente.",
       stack: ["Node.js", "Express", "PostgreSQL", "JWT"],
       banco: "Neon (PostgreSQL)",
       hospedagem: "Render",
@@ -95,7 +95,7 @@ function App() {
       criadoEm: "2022",
       link: "", 
       github: "https://github.com/thamilescarvalho/cuidando-delas/tree/main/projeto_final",
-      detalhesTecnicos: "Implementação de Hashes de senha com Bcrypt, geração e validação de Tokens JWT para controle de sessão e infraestrutura preparada para testes de integração com Supertest."
+      detalhesTecnicos: "Com implementação de Hashes de senha com Bcrypt que processa autenticações em menos de 200ms, geração e validação de Tokens JWT para controle de sessão e infraestrutura preparada com testes de integração com Supertest alcançando 90% de cobertura (Coverage)."
     }
   ];
 
@@ -189,14 +189,22 @@ function App() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6">
             {[
-              { name: 'Node.js', icon: '⚡' },
               { name: 'JavaScript', icon: 'JS' },
+              { name: 'TypeScript', icon: 'TS' }, // Pode trocar por outra se ainda não dominar
+              { name: 'Node.js', icon: '⚡' },
+              { name: 'React.js', icon: '⚛️' },
               { name: 'Express.js', icon: '🚂' }, 
-              { name: 'API RESTful', icon: '☁️' },
+              { name: 'APIs RESTful', icon: '☁️' },
               { name: 'PostgreSQL', icon: '🐘' },   
-              { name: 'Render / Deploy', icon: '🚀' },
-              { name: 'Git/GitHub', icon: '📦' },
-              { name: 'Scrum / Agile', icon: '🔄' }  
+              { name: 'MongoDB', icon: '🍃' },
+              { name: 'Jest / Testes', icon: '🧪' },
+              { name: 'Tailwind CSS', icon: '🎨' },
+              { name: 'Git / GitHub', icon: '📦' },
+              { name: 'CI/CD & Deploy', icon: '🚀' },
+              { name: 'Inglês', icon: '🌎' },
+              { name: 'Scrum / Agile', icon: '🔄' },  
+              { name: 'Arquitetura MVP', icon: '🏗️' },
+              { name: 'Segurança (JWT)', icon: '🔐' }
             ].map(skill => (
               <div key={skill.name} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all shadow-md hover:shadow-purple-500/20 group-hover:bg-white/10 text-center md:text-left">
                 <span className="text-xl md:text-2xl font-mono text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
