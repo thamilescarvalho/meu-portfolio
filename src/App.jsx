@@ -116,8 +116,6 @@ function App() {
 
       {/* === FUNDO GERAL === */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        
-        {/* O METAVERSO 3D FULLSCREEN */}
         <div className="absolute inset-0 z-0 opacity-90">
           <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
             <ambientLight intensity={0.4} />
@@ -126,14 +124,12 @@ function App() {
             <UniversoEspacial />
           </Canvas>
         </div>
-
-        {/* Overlay Gradiente */}
         <div className="absolute inset-0 bg-linear-to-b from-space-black/80 via-transparent to-space-black/90 "></div>
       </div>
 
       {/* HERO SECTION */}
-      <header className="relative pt-48 pb-32 px-6 z-10 flex items-center justify-center min-h-screen">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 relative z-10 w-full">
+      <header className="relative pt-32 md:pt-48 pb-20 md:pb-32 px-4 md:px-6 z-10 flex items-center justify-center min-h-screen">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 relative z-10 w-full">
           
           <div className="relative group shrink-0">
             <div className="absolute inset-0 bg-purple-500 rounded-full blur-3xl opacity-20 group-hover:opacity-50 transition duration-700"></div>
@@ -156,13 +152,13 @@ function App() {
             </div>
           </div>
 
-          <div className="text-center md:text-left">
-            <span className="text-purple-400 font-mono text-sm tracking-[0.5em] uppercase mb-4 block drop-shadow-md">Status: Available for Missions</span>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none drop-shadow-2xl">
+          <div className="text-center md:text-left px-2">
+            <span className="text-purple-400 font-mono text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase mb-4 block drop-shadow-md">Status: Available for Missions</span>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter text-white leading-none drop-shadow-2xl">
               THAMILES <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-fuchsia-400">CARVALHO</span>
             </h1>
-            <p className="mt-4 text-lg md:text-xl text-slate-400 font-light max-w-xl relative z-10 backdrop-blur-md bg-space-black/40 p-4 rounded-2xl border border-white/10 shadow-2xl font-mono">
+            <p className="mt-6 text-base md:text-xl text-slate-400 font-light max-w-xl relative z-10 backdrop-blur-md bg-space-black/40 p-4 md:p-6 rounded-2xl border border-white/10 shadow-2xl font-mono">
               Desenvolvimento Full-Stack estratégico: converto requisitos complexos em soluções digitais escaláveis e de alto desempenho.
             </p>
           </div>
@@ -170,24 +166,28 @@ function App() {
       </header>
 
       {/* SEÇÃO SOBRE */}
-      <section id="sobre" className="max-w-4xl mx-auto py-20 px-6 relative z-10">
-        <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-purple-500/30 p-10 rounded-3xl relative shadow-[0_0_30px_rgba(168,85,247,0.15)] font-mono">
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="w-8 h-px bg-purple-500 font-mono"></span> Bio.
+      <section id="sobre" className="max-w-4xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-10">
+        <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-purple-500/30 p-6 md:p-10 rounded-3xl relative shadow-[0_0_30px_rgba(168,85,247,0.15)] font-mono">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center justify-center md:justify-start gap-3">
+            {/* Removido o hidden md:block */}
+            <span className="w-8 h-px bg-purple-500"></span> 
+            Bio.
           </h2>
-          <p className="font-mono text-lg leading-relaxed text-slate-300 text-justify">
+          <p className="font-mono text-base md:text-lg leading-relaxed text-slate-300 text-center md:text-justify">
             Focada na engenharia de APIs robustas e de alta performance. Com formação em Análise e Desenvolvimento de Sistemas, combino conhecimento técnico atualizado com um background sólido em Suporte e Operações. Essa vivência prática me deu uma visão privilegiada sobre troubleshooting e impacto no usuário final, moldando minha abordagem para criar códigos não apenas funcionais, mas estáveis, escaláveis e fáceis de manter.
           </p>
         </div>
       </section>
 
       {/* HABILIDADES */}
-      <section id="habilidades" className="max-w-6xl mx-auto py-20 px-6 relative z-10">
-        <div className="bg-[#0a0a0a]/40 backdrop-blur-xl border font-mono border-purple-500/30 p-10 rounded-3xl relative overflow-hidden group shadow-[0_0_30px_rgba(168,85,247,0.15)]">
-          <h2 className="text-2xl font-bold text-white mb-10 flex items-center gap-3">
-            <span className="w-8 h-px bg-purple-500"></span> Core Engine Skills
+      <section id="habilidades" className="max-w-6xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-10">
+        <div className="bg-[#0a0a0a]/40 backdrop-blur-xl border font-mono border-purple-500/30 p-6 md:p-10 rounded-3xl relative overflow-hidden group shadow-[0_0_30px_rgba(168,85,247,0.15)]">
+          <h2 className="text-2xl font-bold text-white mb-8 md:mb-10 flex items-center gap-3 justify-center md:justify-start">
+            {/* Removido o hidden md:block */}
+            <span className="w-8 h-px bg-purple-500"></span> 
+            Core Engine Skills
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6">
             {[
               { name: 'Node.js', icon: '⚡' },
               { name: 'JavaScript', icon: 'JS' },
@@ -198,11 +198,11 @@ function App() {
               { name: 'Git/GitHub', icon: '📦' },
               { name: 'Scrum / Agile', icon: '🔄' }  
             ].map(skill => (
-              <div key={skill.name} className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all shadow-md hover:shadow-purple-500/20 group-hover:bg-white/10">
-                <span className="text-xl font-mono text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
+              <div key={skill.name} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all shadow-md hover:shadow-purple-500/20 group-hover:bg-white/10 text-center md:text-left">
+                <span className="text-xl md:text-2xl font-mono text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
                   {skill.icon}
                 </span>
-                <span className="text-sm font-bold text-slate-200 group-hover:text-white transition">
+                <span className="text-xs md:text-sm font-bold text-slate-200 group-hover:text-white transition leading-tight">
                   {skill.name}
                 </span>
               </div>
@@ -212,37 +212,39 @@ function App() {
       </section>
 
       {/* SISTEMAS ATIVOS */}
-      <section id="sistemas" className="max-w-6xl mx-auto py-15 px-3 relative z-30">
-        <h2 className="font-mono text-sm font-bold text-purple-600 mb-12 tracking-[0.5em] uppercase text-center drop-shadow-[0_0_20px_rgba(168,85,247,0.8)]">
+      <section id="sistemas" className="max-w-6xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-30">
+        <h2 className="text-2xl font-bold text-white mb-8 md:mb-10 flex items-center gap-3 justify-center md:justify-start">
+          {/* Removido o hidden md:block */}
+          <span className="w-8 h-px bg-purple-500"></span> 
           Protocolos & Projetos
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {projetos.map((proj) => (
             <div 
               key={proj.id}
               onClick={() => setProjetoSelecionado(proj)}
-              className="group cursor-pointer relative font-mono bg-[#0a0a0a]/90 backdrop-blur-xl border border-purple-400/50 p-8 rounded-2xl hover:border-purple-400 transition-all hover:-translate-y-2 shadow-[0_0_20px_rgba(168,85,247,0.1)] hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]"
+              className="group cursor-pointer relative font-mono bg-[#0a0a0a]/90 backdrop-blur-xl border border-purple-400/50 p-6 md:p-8 rounded-2xl hover:border-purple-400 transition-all hover:-translate-y-2 shadow-[0_0_20px_rgba(168,85,247,0.1)] hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]"
             >
               <div className="flex justify-between items-start mb-6">
                 <div className="p-3 bg-purple-500/20 rounded-lg text-purple-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <span className="font-mono text-[10px] text-purple-400 tracking-widest uppercase opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes</span>
+                <span className="font-mono text-[10px] text-purple-400 tracking-widest uppercase opacity-100 md:opacity-0 md:group-hover:opacity-100 transition duration-300">Ver Detalhes</span>
               </div>
-              <h3 className="text-2xl font-bold text-white group-hover:text-purple-300 transition">{proj.titulo}</h3>
-              <p className="mt-4 text-slate-300 mb-6">{proj.resumo}</p>
-              <div className="font-mono flex gap-3">
-                <span className="text-[10px] font-bold border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 rounded-full text-purple-200 uppercase tracking-wider">
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-purple-300 transition">{proj.titulo}</h3>
+              <p className="mt-3 md:mt-4 text-sm md:text-base text-slate-300 mb-6">{proj.resumo}</p>
+              <div className="font-mono flex flex-wrap gap-2 md:gap-3">
+                <span className="text-[9px] md:text-[10px] font-bold border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 rounded-full text-purple-200 uppercase tracking-wider">
                   Deployed: {proj.hospedagem}
                 </span>
               </div>
             </div>
           ))}
           
-          <div className="font-mono border border-dashed border-purple-500/20 p-8 rounded-2xl flex items-center justify-center text-slate-500 italic bg-[#0a0a0a]/50 backdrop-blur-sm">
+          <div className="font-mono border border-dashed border-purple-500/20 p-6 md:p-8 rounded-2xl flex items-center justify-center text-center text-sm md:text-base text-slate-500 italic bg-[#0a0a0a]/50 backdrop-blur-sm">
              Próxima Missão em Desenvolvimento...
           </div>
         </div>
@@ -250,66 +252,66 @@ function App() {
 
       {/* MODAL DE PROJETOS */}
       {projetoSelecionado && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl font-mono">
-          <div className="bg-[#0f0f0f] border border-purple-500/30 w-full md:max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.2)] relative animate-in fade-in zoom-in duration-300 flex flex-col">
-            <div className="p-6 md:p-8 border-b border-white/5 flex justify-between items-start bg-[#0f0f0f] z-10">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-4 bg-black/95 backdrop-blur-xl font-mono">
+          <div className="bg-[#0f0f0f] border border-purple-500/30 w-full md:max-w-4xl max-h-[90vh] md:max-h-[85vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.2)] relative animate-in fade-in zoom-in duration-300 flex flex-col">
+            <div className="p-5 md:p-8 border-b border-white/5 flex justify-between items-start bg-[#0f0f0f] z-10">
               <div>
-                <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">{projetoSelecionado.titulo}</h3>
-                <p className="text-purple-400 font-mono text-sm mt-2 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-2xl md:text-4xl font-black text-white leading-tight">{projetoSelecionado.titulo}</h3>
+                <p className="text-purple-400 font-mono text-xs md:text-sm mt-2 uppercase tracking-widest flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]"></span>
                   Protocolo: {projetoSelecionado.status}
                 </p>
               </div>
               <button 
                 onClick={() => setProjetoSelecionado(null)} 
-                className="text-slate-400 hover:text-white p-2 transition rounded-full hover:bg-purple-500/20"
+                className="text-slate-400 hover:text-white p-1 md:p-2 transition rounded-full hover:bg-purple-500/20"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
-            <div className="p-6 md:p-8 space-y-8 overflow-y-auto custom-scrollbar flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-5 bg-white/5 rounded-2xl border border-white/5 flex flex-col justify-center">
-                    <h5 className="text-xs text-purple-400 font-bold uppercase mb-2 tracking-wider flex items-center gap-2">Hospedagem</h5>
-                    <p className="text-lg text-white font-medium">{projetoSelecionado.hospedagem}</p>
+            <div className="p-5 md:p-8 space-y-6 md:space-y-8 overflow-y-auto custom-scrollbar flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                  <div className="p-4 md:p-5 bg-white/5 rounded-2xl border border-white/5 flex flex-col justify-center">
+                    <h5 className="text-[10px] md:text-xs text-purple-400 font-bold uppercase mb-1 md:mb-2 tracking-wider flex items-center gap-2">Hospedagem</h5>
+                    <p className="text-base md:text-lg text-white font-medium">{projetoSelecionado.hospedagem}</p>
                   </div>
-                  <div className="p-5 bg-white/5 rounded-2xl border border-white/5 flex flex-col justify-center">
-                    <h5 className="text-xs text-purple-400 font-bold uppercase mb-2 tracking-wider flex items-center gap-2">Database</h5>
-                    <p className="text-lg text-white font-medium">{projetoSelecionado.banco}</p>
+                  <div className="p-4 md:p-5 bg-white/5 rounded-2xl border border-white/5 flex flex-col justify-center">
+                    <h5 className="text-[10px] md:text-xs text-purple-400 font-bold uppercase mb-1 md:mb-2 tracking-wider flex items-center gap-2">Database</h5>
+                    <p className="text-base md:text-lg text-white font-medium">{projetoSelecionado.banco}</p>
                   </div>
               </div>
               <div className="space-y-6">
                   <div>
-                    <h4 className="font-bold mb-3 uppercase text-sm tracking-widest text-purple-400 border-l-4 border-purple-500 pl-3 font-mono">Missão do Projeto</h4>
-                    <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.descricao}</p>
+                    <h4 className="font-bold mb-2 md:mb-3 uppercase text-xs md:text-sm tracking-widest text-purple-400 border-l-4 border-purple-500 pl-3 font-mono">Missão do Projeto</h4>
+                    <p className="text-slate-300 leading-relaxed text-sm md:text-lg text-left">{projetoSelecionado.descricao}</p>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-3 uppercase text-sm tracking-widest text-purple-400 border-l-4 border-purple-500 pl-3">Especificações Técnicas</h4>
-                    <p className="text-slate-300 leading-relaxed text-base md:text-lg">{projetoSelecionado.detalhesTecnicos}</p>
+                    <h4 className="font-bold mb-2 md:mb-3 uppercase text-xs md:text-sm tracking-widest text-purple-400 border-l-4 border-purple-500 pl-3">Especificações Técnicas</h4>
+                    <p className="text-slate-300 leading-relaxed text-sm md:text-lg text-left">{projetoSelecionado.detalhesTecnicos}</p>
                   </div>
               </div>
               <div>
-                  <h4 className="text-slate-500 font-bold mb-4 uppercase text-xs tracking-widest">Tecnologias Envolvidas</h4>
-                  <div className="flex flex-wrap gap-3">
+                  <h4 className="text-slate-500 font-bold mb-3 md:mb-4 uppercase text-[10px] md:text-xs tracking-widest">Tecnologias Envolvidas</h4>
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {projetoSelecionado.stack.map(s => (
-                      <span key={s} className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg text-sm text-purple-200 font-mono font-semibold">{s}</span>
+                      <span key={s} className="px-3 py-1.5 md:px-4 md:py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg text-xs md:text-sm text-purple-200 font-mono font-semibold">{s}</span>
                     ))}
                   </div>
               </div>
             </div>
             
-            <div className="p-6 md:p-8 bg-white/5 border-t border-white/5 mt-auto flex flex-col md:flex-row gap-4 font-mono">
+            <div className="p-5 md:p-8 bg-white/5 border-t border-white/5 mt-auto flex flex-col sm:flex-row gap-3 md:gap-4 font-mono">
               {projetoSelecionado.link && (
                 <a 
                   href={projetoSelecionado.link} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-4 rounded-xl font-bold text-lg transition shadow-[0_0_25px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  className="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] transform hover:-translate-y-1 flex items-center justify-center gap-2"
                 >
                   <span>Acessar Sistema</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 00-2 2h10a2 2 0 00-2-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
@@ -318,10 +320,10 @@ function App() {
                 href={projetoSelecionado.github} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="flex-1 border border-purple-500/30 hover:bg-purple-500/10 text-slate-200 hover:text-white text-center py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2"
+                className="flex-1 border border-purple-500/30 hover:bg-purple-500/10 text-slate-200 hover:text-white text-center py-3 md:py-4 rounded-xl font-bold text-base md:text-lg transition flex items-center justify-center gap-2"
               >
                 <span>Ver Código</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </a>
@@ -333,7 +335,7 @@ function App() {
       {/* MODAL DE ZOOM DA FOTO */}
       {fotoExpandida && (
         <div 
-          className="fixed inset-0 z-110 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
           onClick={() => setFotoExpandida(false)} 
         >
           <div className="relative group">
@@ -343,15 +345,15 @@ function App() {
               alt="Thamiles Carvalho - Zoom" 
               className="relative w-75 h-75 md:w-125 md:h-125 rounded-full object-cover border-4 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.6)] z-10 scale-100 animate-in zoom-in-50 duration-300"
             />
-            <p className="text-center text-slate-400 mt-8 font-mono text-sm tracking-widest uppercase animate-pulse">
+            <p className="text-center text-slate-400 mt-8 font-mono text-xs md:text-sm tracking-widest uppercase animate-pulse">
               Clique em qualquer lugar para fechar
             </p>
           </div>
           <button 
-            className="absolute top-8 right-8 text-white/50 hover:text-white transition"
+            className="absolute top-6 right-6 md:top-8 md:right-8 text-white/50 hover:text-white transition"
             onClick={() => setFotoExpandida(false)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 md:h-10 md:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -363,11 +365,11 @@ function App() {
         href="https://wa.me/5585981852263" 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="fixed bottom-8 right-8 z-50 group"
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 group"
       >
         <div className="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-40 group-hover:opacity-80 transition duration-500"></div>
-        <div className="relative bg-[#0a0a0a] border border-green-500/50 p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:scale-110 transition flex items-center justify-center text-green-500">
-          <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+        <div className="relative bg-[#0a0a0a] border border-green-500/50 p-3 md:p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:scale-110 transition flex items-center justify-center text-green-500">
+          <svg className="w-6 h-6 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.43 5.623 1.43h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
           </svg>
         </div>
@@ -375,9 +377,8 @@ function App() {
 
       {/* FOOTER */}
       <footer className="py-8 text-center border-t border-white/5 relative z-10 bg-[#1c1c1c]">
-        <div className="font-mono max-w-6xl mx-auto px-6">
-           <div className="flex justify-center gap-6 mb-4">
-            {/* GitHub */}
+        <div className="font-mono max-w-6xl mx-auto px-4 md:px-6">
+           <div className="flex justify-center gap-4 md:gap-6 mb-4">
               <a 
                 href="https://github.com/thamilescarvalho" 
                 target="_blank" 
@@ -412,12 +413,14 @@ function App() {
                 </svg>
               </a>
            </div>
-           <p className="text-white font-bold tracking-widest uppercase text-sm drop-shadow-lg mb-4">Fortaleza, CE // UNIFOR // ADS 2025.1 </p>
+           
+           <p className="text-white font-bold tracking-widest uppercase text-[10px] md:text-sm drop-shadow-lg mb-4">Fortaleza/CE</p>
+           
            <div className="flex flex-col items-center justify-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-500 cursor-help" title="Conexão Segura">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-purple-300 font-mono">SSL Secure // Verified System</span>
+              <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-purple-300 font-mono">AMBIENTE SEGURO</span>
            </div>
         </div>
       </footer>
