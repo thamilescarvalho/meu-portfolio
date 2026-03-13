@@ -62,6 +62,104 @@ function UniversoEspacial() {
     </group>
   );
 }
+// --- COMPONENTE: TERMINAL INTERATIVO ---
+function TerminalInterativo() {
+  const [input, setInput] = useState('');
+  const [historico, setHistorico] = useState([
+    { comando: '', saida: 'Inicializando ThamilesOS v2.0.26...' },
+    { comando: '', saida: 'Acesso autorizado. Digite "help" para ver os comandos disponíveis.' }
+  ]);
+  const fimDoTerminalRef = useRef(null);
+
+  // scroll automático para a última linha quando um novo comando é digitado
+  useEffect(() => {
+    fimDoTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [historico]);
+
+  const processarComando = (cmd) => {
+    const comandoLimpo = cmd.trim().toLowerCase();
+    let resposta = '';
+
+    switch (comandoLimpo) {
+      case 'help':
+        resposta = 'Comandos disponíveis:\n- about   : Quem é a Thamiles?\n- skills  : Minha stack de tecnologia\n- contact : Como me achar\n- clear   : Limpar o terminal\n- sudo    : ???';
+        break;
+      case 'about':
+        resposta = 'Sou uma Desenvolvedora Full-Stack focada em criar APIs seguras, escaláveis e interfaces modernas. Gosto de resolver problemas complexos com código limpo.';
+        break;
+      case 'skills':
+        resposta = '-> Back-End : Node.js, Express, PostgreSQL, MongoDB.\n-> Front-End: React.js, Vue.js, Tailwind CSS.\n-> Testes   : Jest, Supertest.';
+        break;
+      case 'contact':
+        resposta = 'Me chame no WhatsApp: (85) 98185-2263\nOu mande uma conexão no LinkedIn!';
+        break;
+      case 'clear':
+        setHistorico([]);
+        return; 
+      case 'sudo':
+      case 'sudo rm -rf /':
+        resposta = '🚔 Alerta de segurança! Tentativa de hack bloqueada. Seu IP foi reportado... (Brincadeira! 😂)';
+        break;
+      case '':
+        resposta = '';
+        break;
+      default:
+        resposta = `Comando não reconhecido: "${comandoLimpo}". Digite "help" para ver as opções.`;
+    }
+
+    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${cmd}`, saida: resposta }]);
+    setInput('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input !== '') {
+      processarComando(input);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-4xl mx-auto py-10 px-4 md:px-6 font-mono text-sm md:text-base relative z-20">
+      <div className="bg-space-black/95 backdrop-blur-xl border border-purple-500/40 rounded-xl overflow-hidden shadow-[0_0_40px_rgba(168,85,247,0.2)]">
+        {/* Barra superior do Terminal */}
+        <div className="bg-[#1a1a1a] border-b border-purple-500/20 px-4 py-3 flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_5px_rgba(234,179,8,0.8)]"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
+          <span className="ml-4 text-slate-400 text-xs tracking-widest uppercase">bash - guest@thamiles_os</span>
+        </div>
+        
+        {/* Tela do Terminal */}
+        <div 
+          className="p-5 h-72 md:h-80 overflow-y-auto text-slate-300" 
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#a855f7 transparent' }}
+          onClick={() => document.getElementById('terminal-input').focus()}
+        >
+          {historico.map((item, index) => (
+            <div key={index} className="mb-4">
+              {item.comando && <div className="text-emerald-400 font-bold mb-1">{item.comando}</div>}
+              {item.saida && <div className="text-slate-300 whitespace-pre-line leading-relaxed">{item.saida}</div>}
+            </div>
+          ))}
+          
+          <form onSubmit={handleSubmit} className="flex mt-2">
+            <span className="text-emerald-400 font-bold mr-3 whitespace-nowrap">recrutador@thamiles:~$</span>
+            <input 
+              id="terminal-input"
+              type="text" 
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="flex-1 bg-transparent border-none outline-none text-white font-mono focus:ring-0 caret-purple-500"
+              autoComplete="off"
+              spellCheck="false"
+            />
+          </form>
+          <div ref={fimDoTerminalRef}></div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [projetoSelecionado, setProjetoSelecionado] = useState(null);
@@ -133,7 +231,6 @@ function App() {
     typeNext();
   }, []);
 
-  // Funções auxiliares para obter o texto de cada parte baseado no índice atual
   const getDisplayPart1 = () => part1Text.substring(0, currentPart >= 1 ? (currentPart === 1 ? currentCharIndex : part1Text.length) : 0);
   const getDisplayPart2 = () => part2Text.substring(0, currentPart >= 2 ? (currentPart === 2 ? currentCharIndex : part2Text.length) : 0);
   const getDisplayPart3 = () => part3Text.substring(0, currentPart >= 3 ? (currentPart === 3 ? currentCharIndex : part3Text.length) : 0);
@@ -176,7 +273,7 @@ function App() {
       <nav className="fixed top-0 w-full z-50 bg-space-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center font-mono">
 
-          {/* LOGO EFEITO TERMINAL DIGITANDO E NEON*/}
+          {/* LOGO EFEITO TERMINAL DIGITANDO*/}
           <div className="flex items-center text-xl font-bold font-mono tracking-tighter group cursor-default h-[1.5em]"> {/* Adicionado h-[1.5em] para evitar pulos de layout */}
 
             <span className="text-purple-400 transition-colors group-hover:text-purple-300">
@@ -270,6 +367,8 @@ function App() {
           </p>
         </div>
       </section>
+
+      <TerminalInterativo />
 
       {/* HABILIDADES */}
       <section id="habilidades" className="max-w-6xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-10">
