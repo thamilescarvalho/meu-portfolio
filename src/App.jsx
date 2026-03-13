@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import minhaFoto from './assets/perfil.PNG'; 
+import React, { useState, useRef, useEffect } from 'react';import minhaFoto from './assets/perfil.PNG'; 
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Stars, Text } from '@react-three/drei';
 
@@ -38,7 +37,7 @@ function ElementoTech({ position, texto, speed, scale = 1 }) {
   );
 }
 
-// --- O UNIVERSO GERAL ---
+// O UNIVERSO GERAL
 function UniversoEspacial() {
   const groupRef = useRef();
 
@@ -67,6 +66,77 @@ function UniversoEspacial() {
 function App() {
   const [projetoSelecionado, setProjetoSelecionado] = useState(null);
   const [fotoExpandida, setFotoExpandida] = useState(false);
+
+  const part1Text = "<THAMILES";
+  const part2Text = "/";
+  const part3Text = ">";
+
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [currentPart, setCurrentPart] = useState(1); // 1, 2, ou 3
+
+  useEffect(() => {
+    let currentPart = 1;
+    let currentCharIndex = 0;
+
+    const typeNext = () => {
+      if (currentPart === 1) {
+        if (currentCharIndex < part1Text.length) {
+          setTimeout(() => {
+            setCurrentCharIndex(currentCharIndex + 1);
+            currentCharIndex++;
+            typeNext();
+          }, 150);
+        } else {
+          setTimeout(() => {
+            setCurrentPart(2);
+            setCurrentCharIndex(0);
+            currentPart = 2;
+            currentCharIndex = 0;
+            typeNext();
+          }, 150);
+        }
+      } else if (currentPart === 2) {
+        if (currentCharIndex < part2Text.length) {
+          setTimeout(() => {
+            setCurrentCharIndex(currentCharIndex + 1);
+            currentCharIndex++;
+            typeNext();
+          }, 150);
+        } else {
+          setTimeout(() => {
+            setCurrentPart(3);
+            setCurrentCharIndex(0);
+            currentPart = 3;
+            currentCharIndex = 0;
+            typeNext();
+          }, 150);
+        }
+      } else if (currentPart === 3) {
+        if (currentCharIndex < part3Text.length) {
+          setTimeout(() => {
+            setCurrentCharIndex(currentCharIndex + 1);
+            currentCharIndex++;
+            typeNext();
+          }, 150);
+        } else {
+          setTimeout(() => {
+            setCurrentPart(1);
+            setCurrentCharIndex(0);
+            currentPart = 1;
+            currentCharIndex = 0;
+            typeNext();
+          }, 5000);
+        }
+      }
+    };
+
+    typeNext();
+  }, []);
+
+  // Funções auxiliares para obter o texto de cada parte baseado no índice atual
+  const getDisplayPart1 = () => part1Text.substring(0, currentPart >= 1 ? (currentPart === 1 ? currentCharIndex : part1Text.length) : 0);
+  const getDisplayPart2 = () => part2Text.substring(0, currentPart >= 2 ? (currentPart === 2 ? currentCharIndex : part2Text.length) : 0);
+  const getDisplayPart3 = () => part3Text.substring(0, currentPart >= 3 ? (currentPart === 3 ? currentCharIndex : part3Text.length) : 0);
 
   const projetos = [
     {
@@ -105,7 +175,30 @@ function App() {
       {/* NAVBAR FIXA */}
       <nav className="fixed top-0 w-full z-50 bg-space-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center font-mono">
-          <span className="text-purple-500 font-mono font-bold tracking-tighter text-xl ">{'<THAMILES />'}</span>
+
+          {/* LOGO EFEITO TERMINAL DIGITANDO E NEON*/}
+          <div className="flex items-center text-xl font-bold font-mono tracking-tighter group cursor-default h-[1.5em]"> {/* Adicionado h-[1.5em] para evitar pulos de layout */}
+
+            <span className="text-purple-400 transition-colors group-hover:text-purple-300">
+              {getDisplayPart1()}
+            </span>
+
+            {currentPart >= 2 && getDisplayPart2() && (
+              <span className="text-emerald-400 filter drop-shadow-[0_0_12px_rgba(110,231,183,1)] transition-all group-hover:drop-shadow-[0_0_16px_rgba(110,231,183,1)] mx-[2px]">
+                {getDisplayPart2()}
+              </span>
+            )}
+
+            {currentPart >= 3 && getDisplayPart3() && (
+              <span className="text-purple-400 transition-colors group-hover:text-purple-300">
+                {getDisplayPart3()}
+              </span>
+            )}
+
+            {/* Cursor piscando*/}
+            <span className="text-slate-200 text-lg ml-1 animate-terminalBlink">|</span>
+          </div>
+
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
             <a href="#sobre" className="hover:text-purple-400 transition">Sobre</a>
             <a href="#sistemas" className="hover:text-purple-400 transition">Projetos</a>
@@ -114,7 +207,7 @@ function App() {
         </div>
       </nav>
 
-      {/* === FUNDO GERAL === */}
+      {/*  GERAL */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 z-0 opacity-90">
           <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
@@ -169,7 +262,6 @@ function App() {
       <section id="sobre" className="max-w-4xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-10">
         <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-purple-500/30 p-6 md:p-10 rounded-3xl relative shadow-[0_0_30px_rgba(168,85,247,0.15)] font-mono">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center justify-center md:justify-start gap-3">
-            {/* Removido o hidden md:block */}
             <span className="w-8 h-px bg-purple-500"></span> 
             Bio.
           </h2>
@@ -183,16 +275,16 @@ function App() {
       <section id="habilidades" className="max-w-6xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-10">
         <div className="bg-[#0a0a0a]/40 backdrop-blur-xl border font-mono border-purple-500/30 p-6 md:p-10 rounded-3xl relative overflow-hidden group shadow-[0_0_30px_rgba(168,85,247,0.15)]">
           <h2 className="text-2xl font-bold text-white mb-8 md:mb-10 flex items-center gap-3 justify-center md:justify-start">
-            {/* Removido o hidden md:block */}
             <span className="w-8 h-px bg-purple-500"></span> 
             Core Engine Skills
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6">
             {[
               { name: 'JavaScript', icon: 'JS' },
-              { name: 'TypeScript', icon: 'TS' }, // Pode trocar por outra se ainda não dominar
+              { name: 'TypeScript', icon: 'TS' },
               { name: 'Node.js', icon: '⚡' },
               { name: 'React.js', icon: '⚛️' },
+              { name: 'Vue.js', icon: '🟢' },
               { name: 'Express.js', icon: '🚂' }, 
               { name: 'APIs RESTful', icon: '☁️' },
               { name: 'PostgreSQL', icon: '🐘' },   
@@ -201,10 +293,9 @@ function App() {
               { name: 'Tailwind CSS', icon: '🎨' },
               { name: 'Git / GitHub', icon: '📦' },
               { name: 'CI/CD & Deploy', icon: '🚀' },
-              { name: 'Inglês', icon: '🌎' },
-              { name: 'Scrum / Agile', icon: '🔄' },  
-              { name: 'Arquitetura MVP', icon: '🏗️' },
-              { name: 'Segurança (JWT)', icon: '🔐' }
+              { name: 'Segurança (JWT)', icon: '🔐' }, 
+              { name: 'Scrum / Agile', icon: '🔄' }, 
+              { name: 'Inglês', icon: '🌎' }
             ].map(skill => (
               <div key={skill.name} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all shadow-md hover:shadow-purple-500/20 group-hover:bg-white/10 text-center md:text-left">
                 <span className="text-xl md:text-2xl font-mono text-purple-400 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
@@ -222,7 +313,6 @@ function App() {
       {/* SISTEMAS ATIVOS */}
       <section id="sistemas" className="max-w-6xl mx-auto py-16 md:py-20 px-4 md:px-6 relative z-30">
         <h2 className="text-2xl font-bold text-white mb-8 md:mb-10 flex items-center gap-3 justify-center md:justify-start">
-          {/* Removido o hidden md:block */}
           <span className="w-8 h-px bg-purple-500"></span> 
           Protocolos & Projetos
         </h2>
@@ -260,7 +350,7 @@ function App() {
 
       {/* MODAL DE PROJETOS */}
       {projetoSelecionado && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-4 bg-black/95 backdrop-blur-xl font-mono">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-3 md:p-4 bg-black/95 backdrop-blur-xl font-mono">
           <div className="bg-[#0f0f0f] border border-purple-500/30 w-full md:max-w-4xl max-h-[90vh] md:max-h-[85vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.2)] relative animate-in fade-in zoom-in duration-300 flex flex-col">
             <div className="p-5 md:p-8 border-b border-white/5 flex justify-between items-start bg-[#0f0f0f] z-10">
               <div>
@@ -343,7 +433,7 @@ function App() {
       {/* MODAL DE ZOOM DA FOTO */}
       {fotoExpandida && (
         <div 
-          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-110 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300"
           onClick={() => setFotoExpandida(false)} 
         >
           <div className="relative group">
