@@ -67,7 +67,7 @@ function TerminalInterativo() {
   const [input, setInput] = useState('');
   const [historico, setHistorico] = useState([
     { comando: '', saida: 'Inicializando ThamilesOS v2.0.26...' },
-    { comando: '', saida: 'Acesso autorizado. Digite "help" para ver os comandos disponíveis.' }
+    { comando: '', saida: 'Acesso autorizado. Link neural estabelecido. Faça uma pergunta sobre o meu currículo!' }
   ]);
   const fimDoTerminalRef = useRef(null);
 
@@ -76,39 +76,48 @@ function TerminalInterativo() {
     fimDoTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [historico]);
 
-  const processarComando = (cmd) => {
-    const comandoLimpo = cmd.trim().toLowerCase();
-    let resposta = '';
+  const processarComando = async (cmd) => {
+    const comandoLimpo = cmd.trim();
+    if (!comandoLimpo) return;
 
-    switch (comandoLimpo) {
-      case 'help':
-        resposta = 'Comandos disponíveis:\n- about   : Quem é a Thamiles?\n- skills  : Minha stack de tecnologia\n- contact : Como me achar\n- clear   : Limpar o terminal\n- sudo    : ???';
-        break;
-      case 'about':
-        resposta = 'Sou uma Desenvolvedora Full-Stack focada em criar APIs seguras, escaláveis e interfaces modernas. Gosto de resolver problemas complexos com código limpo.';
-        break;
-      case 'skills':
-        resposta = '-> Back-End : Node.js, Express, PostgreSQL, MongoDB.\n-> Front-End: React.js, Vue.js, Tailwind CSS.\n-> Testes   : Jest, Supertest.';
-        break;
-      case 'contact':
-        resposta = 'Me chame no WhatsApp: (85) 98185-2263\nOu mande uma conexão no LinkedIn!';
-        break;
-      case 'clear':
-        setHistorico([]);
-        return; 
-      case 'sudo':
-      case 'sudo rm -rf /':
-        resposta = '🚔 Alerta de segurança! Tentativa de hack bloqueada. Seu IP foi reportado... (Brincadeira! 😂)';
-        break;
-      case '':
-        resposta = '';
-        break;
-      default:
-        resposta = `Comando não reconhecido: "${comandoLimpo}". Digite "help" para ver as opções.`;
+    // Se o comando for "clear", limpamos a tela localmente sem chamar a IA
+    if (comandoLimpo.toLowerCase() === 'clear') {
+      setHistorico([]);
+      setInput('');
+      return;
     }
 
-    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${cmd}`, saida: resposta }]);
+    // 1. Coloca a pergunta do usuário na tela e avisa que está processando
+    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${comandoLimpo}`, saida: 'Processando conexão com a IA central...' }]);
     setInput('');
+
+    try {
+      // 2. Faz a chamada (POST) para a SUA API em Node.js
+      const respostaDaApi = await fetch('https://thamiles-ai-api.onrender.com/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mensagem: comandoLimpo })
+      });
+
+      const dados = await respostaDaApi.json();
+
+      // 3. Atualiza o histórico trocando o "Processando..." pela resposta da IA
+      setHistorico(prev => {
+        const novoHistorico = [...prev];
+        novoHistorico[novoHistorico.length - 1].saida = dados.resposta;
+        return novoHistorico;
+      });
+
+    } catch (erro) {
+      // Se o servidor Node.js estiver desligado, ele avisa o erro
+      setHistorico(prev => {
+        const novoHistorico = [...prev];
+        novoHistorico[novoHistorico.length - 1].saida = 'Erro: Falha ao conectar com a IA central. O servidor Node.js está online?';
+        return novoHistorico;
+      });
+    }
   };
 
   const handleSubmit = (e) => {
