@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Stars, Text } from '@react-three/drei';
 
 // --- COMPONENTE 3D: PLANETA ---
+
 function Planeta({ position, size, color, wireframe, speed, ring }) {
   return (
     <Float speed={speed} rotationIntensity={1.5} floatIntensity={2}>
@@ -66,33 +67,32 @@ function UniversoEspacial() {
 function TerminalInterativo() {
   const [input, setInput] = useState('');
   const [historico, setHistorico] = useState([
-    { comando: '', saida: 'Inicializando ThamilesOS v2.0.26...' },
+    { comando: '', saida: 'Inicializando AI Thamiles85 v2.0.26...' },
     { comando: '', saida: 'Acesso autorizado. Link neural estabelecido. Faça uma pergunta sobre o meu currículo!' }
   ]);
-  const fimDoTerminalRef = useRef(null);
+  const terminalContainerRef = useRef(null);
 
-  // scroll automático para a última linha quando um novo comando é digitado
+  // Scroll do terminal
   useEffect(() => {
-    fimDoTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
+    }
   }, [historico]);
 
   const processarComando = async (cmd) => {
     const comandoLimpo = cmd.trim();
     if (!comandoLimpo) return;
 
-    // Se o comando for "clear", limpamos a tela localmente sem chamar a IA
     if (comandoLimpo.toLowerCase() === 'clear') {
       setHistorico([]);
       setInput('');
       return;
     }
 
-    // 1. Coloca a pergunta do usuário na tela e avisa que está processando
-    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${comandoLimpo}`, saida: 'Processando conexão com a IA central...' }]);
+    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${comandoLimpo}`, saida: 'Processando as informações...' }]);
     setInput('');
 
     try {
-      // 2. Faz a chamada (POST) para a SUA API em Node.js
       const respostaDaApi = await fetch('https://thamiles-ai-api.onrender.com/api/chat', {
         method: 'POST',
         headers: {
@@ -103,7 +103,7 @@ function TerminalInterativo() {
 
       const dados = await respostaDaApi.json();
 
-      // 3. Atualiza o histórico trocando o "Processando..." pela resposta da IA
+      // Atualiza o histórico trocando o "Processando..." pela resposta da IA
       setHistorico(prev => {
         const novoHistorico = [...prev];
         novoHistorico[novoHistorico.length - 1].saida = dados.resposta;
@@ -111,7 +111,8 @@ function TerminalInterativo() {
       });
 
     } catch (erro) {
-      // Se o servidor Node.js estiver desligado, ele avisa o erro
+      console.error("Erro técnico na conexão com a IA:", erro);
+      // Se o servidor estiver desligado, mostrar o erro
       setHistorico(prev => {
         const novoHistorico = [...prev];
         novoHistorico[novoHistorico.length - 1].saida = 'Erro: Falha ao conectar com a IA central. O servidor Node.js está online?';
@@ -135,14 +136,15 @@ function TerminalInterativo() {
           <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_5px_rgba(234,179,8,0.8)]"></div>
           <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
-          <span className="ml-4 text-slate-400 text-xs tracking-widest uppercase">bash - guest@thamiles_os</span>
+          <span className="ml-4 text-slate-400 text-xs tracking-widest uppercase">bash - dev@thamiles_85</span>
         </div>
         
-        {/* Tela do Terminal */}
-        <div 
-          className="p-5 h-72 md:h-80 overflow-y-auto text-slate-300" 
-          style={{ scrollbarWidth: 'thin', scrollbarColor: '#a855f7 transparent' }}
-          onClick={() => document.getElementById('terminal-input').focus()}
+        {/* Terminal */}
+        <div
+        ref={terminalContainerRef}
+        className="p-5 h-72 md:h-80 overflow-y-auto text-slate-300" 
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#a855f7 transparent' }}
+        onClick={() => document.getElementById('terminal-input').focus()}
         >
           {historico.map((item, index) => (
             <div key={index} className="mb-4">
@@ -163,7 +165,6 @@ function TerminalInterativo() {
               spellCheck="false"
             />
           </form>
-          <div ref={fimDoTerminalRef}></div>
         </div>
       </div>
     </div>
@@ -179,7 +180,7 @@ function App() {
   const part3Text = ">";
 
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [currentPart, setCurrentPart] = useState(1); // 1, 2, ou 3
+  const [currentPart, setCurrentPart] = useState(1); 
 
   useEffect(() => {
     let currentPart = 1;
@@ -394,14 +395,18 @@ function App() {
               { name: 'React.js', icon: '⚛️' },
               { name: 'Vue.js', icon: '🟢' },
               { name: 'Express.js', icon: '🚂' }, 
-              { name: 'APIs RESTful', icon: '☁️' },
+              { name: 'Arquitetura de Sistemas', icon: '🏗️' },
               { name: 'PostgreSQL', icon: '🐘' },   
               { name: 'MongoDB', icon: '🍃' },
-              { name: 'Jest / Testes', icon: '🧪' },
+              { name: 'Integração de IAs', icon: '🤖' },
+              { name: 'APIs RESTful', icon: '🔌' },
               { name: 'Tailwind CSS', icon: '🎨' },
-              { name: 'Git / GitHub', icon: '📦' },
+              { name: 'DevOps & Cloud', icon: '☁️' },
               { name: 'CI/CD & Deploy', icon: '🚀' },
-              { name: 'Segurança (JWT)', icon: '🔐' }, 
+              { name: 'Segurança da Info', icon: '🛡️' }, 
+              { name: 'Debugging Avançado', icon: '🔎' },
+              { name: 'Jest / Testes', icon: '🧪' },
+              { name: 'Git / GitHub', icon: '📦' },
               { name: 'Scrum / Agile', icon: '🔄' }, 
               { name: 'Inglês', icon: '🌎' }
             ].map(skill => (
