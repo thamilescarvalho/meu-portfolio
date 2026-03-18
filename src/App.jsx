@@ -67,8 +67,8 @@ function UniversoEspacial() {
 function TerminalInterativo() {
   const [input, setInput] = useState('');
   const [historico, setHistorico] = useState([
-    { comando: '', saida: 'Inicializando AI Thamiles85 v2.0.26...' },
-    { comando: '', saida: 'Acesso autorizado. Link neural estabelecido. Faça uma pergunta sobre o meu currículo!' }
+    { comando: '', saida: 'Inicializando AI Thamiles_085 v2.0.26...' },
+    { comando: '', saida: 'Acesso autorizado! Faça uma pergunta sobre o meu currículo.' }
   ]);
   const terminalContainerRef = useRef(null);
 
@@ -89,7 +89,7 @@ function TerminalInterativo() {
       return;
     }
 
-    setHistorico(prev => [...prev, { comando: `recrutador@thamiles:~$ ${comandoLimpo}`, saida: 'Processando as informações...' }]);
+    setHistorico(prev => [...prev, { comando: comandoLimpo, saida: 'Processando as informações...' }]);
     setInput('');
 
     try {
@@ -103,7 +103,6 @@ function TerminalInterativo() {
 
       const dados = await respostaDaApi.json();
 
-      // Atualiza o histórico trocando o "Processando..." pela resposta da IA
       setHistorico(prev => {
         const novoHistorico = [...prev];
         novoHistorico[novoHistorico.length - 1].saida = dados.resposta;
@@ -112,7 +111,6 @@ function TerminalInterativo() {
 
     } catch (erro) {
       console.error("Erro técnico na conexão com a IA:", erro);
-      // Se o servidor estiver desligado, mostrar o erro
       setHistorico(prev => {
         const novoHistorico = [...prev];
         novoHistorico[novoHistorico.length - 1].saida = 'Erro: Falha ao conectar com a IA central. O servidor Node.js está online?';
@@ -136,10 +134,10 @@ function TerminalInterativo() {
           <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_5px_rgba(234,179,8,0.8)]"></div>
           <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
-          <span className="ml-4 text-slate-400 text-xs tracking-widest uppercase">bash - dev@thamiles_85</span>
+          <span className="ml-4 text-slate-400 text-xs tracking-widest uppercase">bash - dev@thamiles_085</span>
         </div>
         
-        {/* Terminal */}
+        {/* Tela do Terminal */}
         <div
         ref={terminalContainerRef}
         className="p-5 h-72 md:h-80 overflow-y-auto text-slate-300" 
@@ -147,14 +145,29 @@ function TerminalInterativo() {
         onClick={() => document.getElementById('terminal-input').focus()}
         >
           {historico.map((item, index) => (
-            <div key={index} className="mb-4">
-              {item.comando && <div className="text-emerald-400 font-bold mb-1">{item.comando}</div>}
-              {item.saida && <div className="text-slate-300 whitespace-pre-line leading-relaxed">{item.saida}</div>}
+            <div key={index} className="mb-6 flex flex-col gap-2">
+              
+              {item.comando && (
+                <div className="flex gap-3 items-start">
+                  <span className="text-emerald-400 whitespace-nowrap">dev@usuário: ❯</span>
+                  <span className="font-medium">{item.comando}</span>
+                </div>
+              )}
+              
+              {item.saida && (
+                <div className="flex gap-3 items-start">
+                  <span className="text-purple-400 whitespace-nowrap mt-0.5">dev@thamiles: ❯</span>
+                  <div className="text-slate-300 whitespace-pre-line leading-relaxed flex-1">
+                    {item.saida}
+                  </div>
+                </div>
+              )}
+
             </div>
           ))}
           
           <form onSubmit={handleSubmit} className="flex mt-2">
-            <span className="text-emerald-400 font-bold mr-3 whitespace-nowrap">recrutador@thamiles:~$</span>
+            <span className="text-emerald-400 mr-3 whitespace-nowrap">dev@usuário: ❯</span>
             <input 
               id="terminal-input"
               type="text" 
