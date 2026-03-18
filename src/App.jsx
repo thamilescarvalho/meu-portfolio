@@ -359,7 +359,7 @@ function App() {
               <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-fuchsia-400">CARVALHO</span>
             </h1>
             <p className="mt-6 text-base md:text-xl text-slate-400 font-light max-w-xl relative z-10 backdrop-blur-md bg-space-black/40 p-4 md:p-6 rounded-2xl border border-white/10 shadow-2xl font-mono">
-              Desenvolvimento Full-Stack estratégico: converto requisitos complexos em soluções digitais escaláveis e de alto desempenho.
+              Construindo software de alto impacto, com foco em arquitetura limpa, performance e experiência do usuário.
             </p>
           </div>
         </div>
@@ -373,7 +373,7 @@ function App() {
             Bio.
           </h2>
           <p className="font-mono text-base md:text-lg leading-relaxed text-slate-300 text-center md:text-justify">
-            Focada na engenharia de APIs robustas e de alta performance. Com formação em Análise e Desenvolvimento de Sistemas, combino conhecimento técnico atualizado com um background sólido em Suporte e Operações. Essa vivência prática me deu uma visão privilegiada sobre troubleshooting e impacto no usuário final, moldando minha abordagem para criar códigos não apenas funcionais, mas estáveis, escaláveis e fáceis de manter.
+            Como Software Engineer, sou focada em projetar e construir sistemas robustos e de alta performance. Meu objetivo é entender o impacto real no negócio e no usuário final para criar soluções que não sejam apenas funcionais, mas resilientes, escaláveis, com código limpo e de fácil manutenção. Com formação em Análise e Desenvolvimento de Sistemas, combino sólidos fundamentos de engenharia de software com um background valioso em Suporte e Operações. Essa vivência prática me proporcionou uma visão sistêmica apurada sobre todo o ciclo de vida da aplicação: desde o design da arquitetura até o troubleshooting complexo em ambiente de produção.
           </p>
         </div>
       </section>
