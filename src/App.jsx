@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';import minhaFoto from
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Stars, Text } from '@react-three/drei';
 
-// --- COMPONENTE 3D: PLANETA ---
+// COMPONENTE PLANETAS FLUTUANTES
 
 function Planeta({ position, size, color, wireframe, speed, ring }) {
   return (
@@ -21,7 +21,7 @@ function Planeta({ position, size, color, wireframe, speed, ring }) {
   );
 }
 
-// --- COMPONENTE 3D: CÓDIGO FLUTUANTE ---
+// COMPONENTE CÓDIGO FLUTUANTE 
 function ElementoTech({ position, texto, speed, scale = 1 }) {
   return (
     <Float speed={speed} rotationIntensity={0.8} floatIntensity={1.5}>
@@ -63,7 +63,7 @@ function UniversoEspacial() {
     </group>
   );
 }
-// --- COMPONENTE: TERMINAL INTERATIVO ---
+// COMPONENTE TERMINAL
 function TerminalInterativo() {
   const [input, setInput] = useState('');
   const [historico, setHistorico] = useState([
@@ -286,6 +286,20 @@ function App() {
       link: "", 
       github: "https://github.com/thamilescarvalho/cuidando-delas/tree/main/projeto_final",
       detalhesTecnicos: "Com implementação de Hashes de senha com Bcrypt que processa autenticações em menos de 200ms, geração e validação de Tokens JWT para controle de sessão e infraestrutura preparada com testes de integração com Supertest alcançando 90% de cobertura (Coverage)."
+    },
+    {
+      id: 3,
+      titulo: "E-commerce: Loja Fortal Prime",
+      resumo: "E-commerce full-stack de artigos esportivos com alta performance e UI/UX refinada.",
+      descricao: "Desenvolvido com foco em alta performance (Server-Side Rendering do Next.js) e UI/UX (filtros dinâmicos em tempo real, animações e design responsivo). O backend foi arquitetado com Strapi para gerenciamento ágil de conteúdo, incluindo autenticação segura de usuários e persistência de dados de categorias e produtos.",
+      stack: ["Next.js", "TypeScript", "Tailwind", "Strapi", "PostgreSQL", "JWT"], 
+      banco: "PostgreSQL",
+      hospedagem: "Vercel (Front) / Render (API)",
+      status: "Em Operação / Produção",
+      criadoEm: "2026",
+      link: "https://fortal-prime.vercel.app/", 
+      github: "https://github.com/thamilescarvalho/ecommerce-fortal-prime",
+      detalhesTecnicos: "Implementação de carrinho de compras dinâmico, integração segura e otimização de performance para carregamento rápido das imagens dos produtos."
     }
   ];
 
@@ -420,7 +434,7 @@ function App() {
               { name: 'Debugging Avançado', icon: '🔎' },
               { name: 'Jest / Testes', icon: '🧪' },
               { name: 'Git / GitHub', icon: '📦' },
-              { name: 'Scrum / Agile', icon: '🔄' }, 
+              { name: 'Troubleshooting / Scrum / Agile', icon: '🔄' }, 
               { name: 'Inglês', icon: '🌎' }
             ].map(skill => (
               <div key={skill.name} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all shadow-md hover:shadow-purple-500/20 group-hover:bg-white/10 text-center md:text-left">
